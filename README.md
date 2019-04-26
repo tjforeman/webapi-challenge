@@ -26,13 +26,23 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+- We learned about setting up express servers, as well as express routers. 
+
 - [ ] Describe Middleware?
+
+-Middleware is a function that can be called later to execute what the functon is defined to do. they can be used for logic, or to use imported libraries as well. 
 
 - [ ] Describe a Resource?
 
+- A resource is something that's stored on an API that can be used in the CRUD flow.
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+- An api can return status codes, or a message in Json format, to let the client know the request was successful.
+
 - [ ] How can we partition our application into sub-applications?
+
+- We can use express Router to partition our application into sub-applications. 
 
 ## Project Setup
 
