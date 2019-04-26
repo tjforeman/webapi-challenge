@@ -6,7 +6,7 @@ const router= express.Router()
 
 router.post('/',(req,res) =>{
     const newAction=req.body
-    if (newAction.project_id || !newAction.notes || !newAction.description){
+    if (!newAction.project_id || !newAction.notes || !newAction.description){
         res.status(400).json({message:"Please provide a valid project id, as well as a  description and notes for the project."})
     }else if
         (newAction.description.length>128) {
@@ -48,6 +48,25 @@ router.get('/:id', (req,res)=>{
         res.status(500).json({error:err, message:"that action could not be retrieved."})
     })
     })
+
+    router.put('/:id',(req,res) =>{
+        const updatedAction=req.body
+        if (!updatedAction.project_id ||!updatedAction.description || !updatedAction.notes){
+            res.status(400).json({message:"Please provide a valid project id, as well as a  description and notes for the project."})
+        }else if
+            (updatedAction.description.length>128) {
+             res.status(400).json({message:' your Description must be less than 128 characters'})
+            }else{
+        db
+        .update(req.params.id,updatedAction)
+        .then(action=>{
+            res.status(201).json(action)
+        })
+        .catch(err=>{
+            res.status(500).json({ error: "The action information could not be modified."})
+        })
+        }
+         })
 
 
 router.delete('/:id', (req,res)=>{
