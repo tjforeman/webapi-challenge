@@ -1,7 +1,11 @@
 const express=require('express');
 
 const server=express()
+
+const cors =require('cors')
+
 server.use(express.json());
+server.use(cors())
 
 const actionRouter = require('./data/action-router.js');
 const projectRouter = require('./data/project-router.js');
